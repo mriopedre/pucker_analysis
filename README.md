@@ -3,8 +3,9 @@
 Python code to calculate puckering of monosaccharides in an MD trajectory. 
 Specially tuned for charmm36m forcefield and iduronic acid monosaccharides, but adjustable to any use.
 
-# Example usage
 # WARNING - the trajectory should be made whole before analysis (gmx editconf -pbc mol)
+
+#Example usage:
 
 ```python
 
