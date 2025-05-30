@@ -25,7 +25,7 @@ class PuckerAnalysis:
         Returns:
             list: List of residue IDs
         """
-        return list(set(self.u.select_atoms(sel).resids))
+        return list(set(u.select_atoms(sel).resids))
 
     def cremer_pople_piranose(self, resid: int, ring_atoms: list) -> tuple:
         """
@@ -172,7 +172,10 @@ class PuckerAnalysis:
 #%%
 # Example usage
 # Select simulation files and selection of the residues
-fol = '/example_folder/'
+#fol = '/example_folder/'
+fol = '/wrk/gromacs/lumi/metad-patterns/AIDOA-2S/sim/run/'
+#fol = '/wrk/gromacs/lumi/metad-patterns/AIDOA-2S/sim/run_4c1/'
+
 u = md.Universe(fol + 'nowat.gro', fol + 'whole.xtc')
 sel = 'resname AIDOA'
 
@@ -189,5 +192,5 @@ puck = PC.cremer_pople_analysis(selections)
 q_tetha_phi = PC.make_theta_phi_dict(puck)
 # Puckers dict converts the theta values into puckering types, only usefull for a handwaving classification of IdoA
 puckers = PC.make_puckers_dict(q_tetha_phi)
-PC.present_puckers_as_df(puckers)
+df = PC.present_puckers_as_df(puckers)
 
